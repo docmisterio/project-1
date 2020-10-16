@@ -12,8 +12,9 @@ class ViewController: UITableViewController {
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
-        
-        for item in items {
+        let orderedItems = items.sorted()
+
+        for item in orderedItems {
             if item.hasPrefix("nssl") {
                 pictures.append(item)
             }
