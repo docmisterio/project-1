@@ -13,7 +13,7 @@ class ViewController: UITableViewController {
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
         let orderedItems = items.sorted()
-
+        
         for item in orderedItems {
             if item.hasPrefix("nssl") {
                 pictures.append(item)
@@ -36,6 +36,9 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
+            
+            vc.selectedImageCount = indexPath.row + 1
+            vc.totalImageCount = pictures.count
         }
     }
 }
