@@ -36,8 +36,9 @@ class DetailViewController: UIViewController {
             print("No Image Found")
             return
         }
+        let imageText = selectedImage ?? "no image name"
         
-        let shareViewController = UIActivityViewController(activityItems: [image, selectedImage ?? "no image name"], applicationActivities: [])
+        let shareViewController = UIActivityViewController(activityItems: [image, imageText], applicationActivities: nil)
         shareViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem // makes this work on iPad
         
         present(shareViewController, animated: true)

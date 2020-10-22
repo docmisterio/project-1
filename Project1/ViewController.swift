@@ -9,6 +9,8 @@ class ViewController: UITableViewController {
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendTapped))
+        
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -44,6 +46,15 @@ class ViewController: UITableViewController {
             vc.totalImageCount = pictures.count
             // on click each cell needs to know what to do WHEN it's clicked.
         }
+    }
+    
+    @objc func recommendTapped() {
+        let shareText = "check out my app that I'm building with #100DaysOfSwift"
+        
+        let recommendViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        recommendViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
+        present(recommendViewController, animated: true)
     }
 }
 
