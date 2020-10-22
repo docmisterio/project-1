@@ -37,9 +37,9 @@ class DetailViewController: UIViewController {
             return
         }
         
-        let vc = UIActivityViewController(activityItems: [image, selectedImage ?? "no image name"], applicationActivities: [])
-        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem // makes this work on iPad
+        let shareViewController = UIActivityViewController(activityItems: [image, selectedImage ?? "no image name"], applicationActivities: [])
+        shareViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem // makes this work on iPad
         
-        present(vc, animated: true)
+        present(shareViewController, animated: true)
     }
 }
