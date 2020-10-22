@@ -23,6 +23,7 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
+        // every tableView needs to know how many rows to show.
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -30,7 +31,9 @@ class ViewController: UITableViewController {
         
         cell.textLabel?.text = pictures[indexPath.row]
         return cell
+        // every tableView needs to know what text to show for each cell
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
@@ -39,6 +42,7 @@ class ViewController: UITableViewController {
             
             vc.selectedImageCount = indexPath.row + 1
             vc.totalImageCount = pictures.count
+            // on click each cell needs to know what to do WHEN it's clicked.
         }
     }
 }
