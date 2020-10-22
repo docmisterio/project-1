@@ -29,6 +29,7 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
     }
+    // each ViewController that inherits from UIViewController needs to be told what to do when it appears and when it disappears, there are additional options here but this is good enough for now. 
     
     @objc func shareTapped() {
         guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
