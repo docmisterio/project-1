@@ -27,6 +27,8 @@ class ViewController: UITableViewController {
         }
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
         // every tableView needs to know how many rows to show.
