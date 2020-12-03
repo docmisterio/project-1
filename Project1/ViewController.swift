@@ -9,7 +9,6 @@ class ViewController: UITableViewController {
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-<<<<<<< HEAD
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let fm = FileManager.default
             let path = Bundle.main.resourcePath!
@@ -20,19 +19,11 @@ class ViewController: UITableViewController {
                 if item.hasPrefix("nssl") {
                     self?.pictures.append(item)
                 }
-=======
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(recommendTapped))
-        
-        let fm = FileManager.default
-        let path = Bundle.main.resourcePath!
-        let items = try! fm.contentsOfDirectory(atPath: path)
-        let orderedItems = items.sorted()
-        
-        for item in orderedItems {
-            if item.hasPrefix("nssl") {
-                pictures.append(item)
->>>>>>> f70bf15d7bb6450661a5663d05f6903d05872163
             }
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+            
         }
     }
     
@@ -51,18 +42,13 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
             
             vc.selectedImageCount = indexPath.row + 1
             vc.totalImageCount = pictures.count
-<<<<<<< HEAD
-        }
-    }
-    
-    
-=======
             // on click each cell needs to know what to do WHEN it's clicked.
         }
     }
@@ -75,5 +61,4 @@ class ViewController: UITableViewController {
         
         present(recommendViewController, animated: true)
     }
->>>>>>> f70bf15d7bb6450661a5663d05f6903d05872163
 }
